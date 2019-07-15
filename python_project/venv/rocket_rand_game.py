@@ -34,28 +34,27 @@ while 1:
     else:
         thruster = input_temp
 
-
-    #인풋값이 fuel 보다 크다면 남은 fuel을 thruster로 보여주고 남은 연료 만큼 계산
+    #if input_temp > fuel, show the fuel by thruster. And calc the last fuel
     if (input_temp > fuel):
         print ("Out of fuel! Thrusters at {}".format(fuel))
 
         thruster = fuel
-        #fuel 값을 count 값으로 넣고
+        #add count the val by fuel
         count = fuel
-        # fuel 값 0으로 주고
+        #set the fuel value to '0'
         fuel = 0
 
         while 1:
-            #만약 count 값이 0이면 반복문 탈출
             if(count == 0):
                 break
             elif(count == 1):
+                #DO NOT USED THE THURSTER VALUE
+                #DO NOT CALC THE FUEL
+
                 # calc acceleration
                 acceleration = gravity
                 # calc position
                 position = position + velocity + acceleration * 0.5
-                # calc fuel
-                #fuel = fuel - thruster
                 # calc velocity
                 velocity = velocity + acceleration
                 if velocity >= -3:
@@ -66,24 +65,25 @@ while 1:
                     print ("Rocket crashed! Velocity was {} m/s".format(velocity))
                     exit()
             elif(count == 4):
+                # DO NOT CALC THE FUEL
+
                 # calc acceleration
                 acceleration = gravity + thruster
                 # calc position
                 position = position + velocity + acceleration * 0.5
-                # calc fuel
-                # fuel = fuel - thruster
                 # calc velocity
                 velocity = velocity + acceleration
                 print ('P: {0} V: {1} F: {2}'.format(position, velocity, fuel))
                 print("No fuel -- rockeet is in free-fall!")
                 count = count - 1
             else:
+                # DO NOT USED THE THURSTER VALUE
+                # DO NOT CALC THE FUEL
+
                 # calc acceleration
                 acceleration = gravity
                 # calc position
                 position = position + velocity + acceleration * 0.5
-                # calc fuel
-                #fuel = fuel - thruster
                 # calc velocity
                 velocity = velocity + acceleration
                 print ('P: {0} V: {1} F: {2}'.format(position, velocity, fuel))
@@ -99,7 +99,6 @@ while 1:
     # calc velocity
     velocity = velocity + acceleration
 
-    #포지션이 0보다 작으면 성공
     if position < 0:
         position = 0
         print ('P: {0} V: {1} F: {2}'.format(position, velocity, fuel))
